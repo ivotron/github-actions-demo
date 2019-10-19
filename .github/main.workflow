@@ -21,13 +21,13 @@ action "lint" {
 
 action "branch-filter" {
   needs = ["test","lint"]
-  uses = "actions/bin/filter@master"
+  uses = "popperized/bin/filter@master"
   args = "branch master"
 }
 
 action "deploy" {
   needs = ["branch-filter"]
-  uses = "actions/bin/sh@master"
+  uses = "popperized/bin/sh@master"
   args = ["env"]
   secrets = ["PHONY_SECRET"]
   env = {
